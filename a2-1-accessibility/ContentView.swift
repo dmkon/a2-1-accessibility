@@ -12,40 +12,52 @@ struct ContentView: View {
         VStack {
             HStack {
                 Button {
-                    //none
+                    exit(EXIT_SUCCESS)
                 } label: {
                     Image(systemName: "xmark")
                         .imageScale(.large)
                         .foregroundColor(.accentColor)
                 }
+                .accessibilityHint(Text("Double tap to close application."))
+                .accessibilityAddTraits(.isButton)
+               
                 Spacer()
             }
             
             Spacer()
+            
             Image("Journey")
+                .accessibilityHidden(true)
             
-            Text("Build healthy new habits")
-                .font(.title)
-                .bold()
-            
-            Text("Discover a wide selection of programs to help you reach your health goals")
-                .font(.title2)
+            VStack {
+                Text("Build healthy new habits")
+                    .font(.title)
+                    .bold()
+                
+                Text("Discover a wide selection of programs to help you reach your health goals")
+                    .font(.title2)
+            }
+            .accessibilityElement(children: .combine)
             
             Spacer()
             
             Divider().frame(maxWidth: .infinity)
+            
             HStack {
                 Spacer()
+                
                 Button {
-                    //none
+                    //
                 } label: {
                     Image(systemName: "arrow.right.circle")
                         .resizable()
                         .frame(width: 48.0, height: 48.0)
                         .foregroundColor(.accentColor)
                 }
+                .accessibilityLabel(Text("Go next"))
+                .accessibilityHint(Text("Double tap to go next."))
+                .accessibilityAddTraits(.isButton)
             }
-        
         }
         .padding()
     }
